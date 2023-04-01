@@ -3,6 +3,7 @@ package com.backend.ecommerce.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product {
@@ -15,10 +16,8 @@ public class Product {
 	private String description;
 	private int price;
 	private int warrenty;
-	
 	public Product() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Product(int product_id, String product_type, String product_url, String product_name, String description,
 			int price, int warrenty) {
@@ -43,7 +42,6 @@ public class Product {
 	public void setProduct_type(String product_type) {
 		this.product_type = product_type;
 	}
-	
 	public String getProduct_url() {
 		return product_url;
 	}
@@ -74,13 +72,5 @@ public class Product {
 	public void setWarrenty(int warrenty) {
 		this.warrenty = warrenty;
 	}
-	@Override
-	public String toString() {
-		return "Product [product_id=" + product_id + ", product_type=" + product_type + ", product_url=" + product_url
-				+ ", product_name=" + product_name + ", description=" + description + ", price=" + price + ", warrenty="
-				+ warrenty + "]";
-	}
-	
-	
 	
 }

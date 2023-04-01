@@ -1,7 +1,11 @@
 package com.backend.ecommerce.model;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -13,11 +17,13 @@ public class User {
 	private String userPhone;
 	private String gender;
 	private Address address;
+	@ManyToMany
+	private List<Product> Cart;
 	public User() {
 		super();
 	}
 	public User(String userEmail, String userName, String userPassword, String userPhone, String gender,
-			Address address) {
+			Address address, List<Product> cart) {
 		super();
 		this.userEmail = userEmail;
 		this.userName = userName;
@@ -25,6 +31,7 @@ public class User {
 		this.userPhone = userPhone;
 		this.gender = gender;
 		this.address = address;
+		Cart = cart;
 	}
 	public String getUserEmail() {
 		return userEmail;
@@ -62,10 +69,11 @@ public class User {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-	@Override
-	public String toString() {
-		return "User [userEmail=" + userEmail + ", userName=" + userName + ", userPassword=" + userPassword
-				+ ", userPhone=" + userPhone + ", gender=" + gender + ", address=" + address + "]";
+	public List<Product> getCart() {
+		return Cart;
+	}
+	public void setCart(List<Product> cart) {
+		Cart = cart;
 	}
 	
 	
